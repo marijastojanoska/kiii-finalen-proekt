@@ -7,6 +7,7 @@ import com.sorsix.backend.service.*
 import jakarta.annotation.PostConstruct
 import org.springframework.core.io.Resource
 import org.springframework.core.io.ResourceLoader
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.stereotype.Component
 import java.io.IOException
 import java.nio.file.Files
@@ -67,33 +68,38 @@ class DataInitializer(
     )
 
     private fun uploadImagesFromDirectory(directoryPath: String) {
-        val resource: Resource = resourceLoader.getResource("classpath:$directoryPath")
-        val directory = resource.file
-        if (directory.exists() && directory.isDirectory) {
-            val files = directory
-                .listFiles { _, name ->
-                    name.endsWith(".jpeg")
-                            || name.endsWith(".jpg")
-                            || name.endsWith(".png")
+        val resource = resourceLoader.getResource("classpath:$directoryPath")
+
+        if (resource.exists()) {
+            try {
+                val resourcePattern = "classpath:$directoryPath/*.{jpeg,jpg,png}"
+                val resources = PathMatchingResourcePatternResolver().getResources(resourcePattern)
+
+                resources.sortedBy { it.filename }.forEach { fileResource ->
+                    try {
+                        val imageBytes = fileResource.inputStream.readBytes()
+                        val fileName = fileResource.filename ?: return@forEach
+
+                        val imageRequest = ImageRequest(
+                            image = imageBytes,
+                            name = fileName.substringBeforeLast("."),
+                            type = fileName.substringAfterLast(".")
+                        )
+
+                        val image = imageService.createImage(imageRequest)
+                        println("Uploaded image: $fileName, ID: ${image.id}")
+                    } catch (e: IOException) {
+                        println("Failed to upload image: ${fileResource.filename}, error: ${e.message}")
+                    }
                 }
-            files?.sortedBy { it.name }?.forEach { file ->
-                try {
-                    val imageBytes = Files.readAllBytes(file.toPath())
-                    val imageRequest = ImageRequest(
-                        image = imageBytes,
-                        name = file.nameWithoutExtension,
-                        type = file.extension
-                    )
-                    val image = imageService.createImage(imageRequest)
-                    println("Uploaded image: ${file.name}, ID: ${image.id}")
-                } catch (e: IOException) {
-                    println("Failed to upload image: ${file.name}, error: ${e.message}")
-                }
+            } catch (e: IOException) {
+                println("Failed to access resources in $directoryPath, error: ${e.message}")
             }
         } else {
-            println("Directory $directoryPath does not exist or is not a directory.")
+            println("Directory $directoryPath does not exist or is not accessible.")
         }
     }
+
 
     private fun generateUniqueDateOfBirth(index: Int): LocalDate {
         val startDate = LocalDate.of(2000, 1, 1)
