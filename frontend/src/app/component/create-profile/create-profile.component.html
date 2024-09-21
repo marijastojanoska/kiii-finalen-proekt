@@ -1,0 +1,102 @@
+<navbar class="navbar-fixed"></navbar>
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-6"></div>
+    <div class="col-6 back-to-dashboard">
+      <a routerLink="/dashboard" class="btn">Back to Dashboard</a>
+    </div>
+  </div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmitProfile()">
+    <h2>Profile Information</h2>
+    <div class="form-group" [ngClass]="{'highlighted-container': activeForm === 'profile'}">
+      <label for="bio">Bio</label>
+      <textarea id="bio" formControlName="bio" class="form-control" placeholder="Enter your bio"></textarea>
+      <label for="dateOfBirth">Date of Birth</label>
+      <input id="dateOfBirth" type="date" formControlName="dateOfBirth" class="form-control"/>
+      <div *ngIf="errorMessage && profileForm.invalid" class="error-message">{{ errorMessage }}</div>
+      <button type="submit" (click)="setActiveForm('profile')" class="btn apply-btn">Apply Changes</button>
+    </div>
+  </form>
+
+  <div class="image-upload">
+    <h2>Upload Profile Picture</h2>
+    <div class="form-group" [ngClass]="{'highlighted-container': activeForm === 'imageUpload'}">
+      <input id="profilePicture" type="file" #fileInput (change)="onFileSelected($event)" class="form-control"/>
+      <div *ngIf="currentProfilePictureUrl" class="image-container">
+        <img [src]="currentProfilePictureUrl" alt="Profile Picture" class="image-preview"/>
+        <br>
+        <button *ngIf="selectedImage" type="button" (click)="deleteCurrentImage()" class="btn btn-warning">Delete
+          Current Image
+        </button>
+        <br>
+        <button *ngIf="originalProfilePictureUrl && !selectedImage" type="button" (click)="deleteProfilePicture()"
+                class="btn btn-danger">Delete Profile Picture
+        </button>
+        <br>
+      </div>
+      <button type="button" *ngIf="selectedImage" (click)="onUploadImage()" class="btn apply-btn">Upload Image</button>
+    </div>
+  </div>
+
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmitAccount()">
+    <h2>Account Information</h2>
+    <div class="form-group" [ngClass]="{'highlighted-container': activeForm === 'account'}">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" formControlName="username" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Enter your email"/>
+      </div>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName" class="form-control"
+               placeholder="Enter your first name"/>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName" class="form-control"
+               placeholder="Enter your last name"/>
+      </div>
+      <div *ngIf="errorMessage && accountForm.invalid" class="error-message">{{ errorMessage }}</div>
+      <button type="submit" (click)="setActiveForm('account')" class="btn apply-btn">Apply Changes</button>
+    </div>
+  </form>
+
+  <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+    <h2>Change Password</h2>
+    <div class="form-group" [ngClass]="{'highlighted-container': activeForm === 'password'}">
+      <div class="form-group">
+        <label for="oldPassword">Old Password</label>
+        <input id="oldPassword" type="password" formControlName="oldPassword" class="form-control"
+               placeholder="Enter your old password"/>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input id="newPassword" type="password" formControlName="newPassword" class="form-control"
+               placeholder="Enter your new password"/>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" class="form-control"
+               placeholder="Confirm your new password"/>
+      </div>
+      <div *ngIf="errorMessage && passwordForm.invalid" class="error-message">{{ errorMessage }}</div>
+      <button type="submit" (click)="setActiveForm('password')" class="btn apply-btn">Change Password</button>
+    </div>
+  </form>
+
+<!--  <form [formGroup]="deactivateForm" (ngSubmit)="deactivateAccount()">-->
+<!--    <h2>Deactivate Account</h2>-->
+<!--    <div class="form-group" [ngClass]="{'highlighted-container': activeForm === 'deactivate'}">-->
+<!--      <div class="form-group">-->
+<!--        <label for="oldPasswordDeactivate">Old Password</label>-->
+<!--        <input id="oldPasswordDeactivate" type="password" formControlName="oldPasswordDeactivate" class="form-control"-->
+<!--               placeholder="Enter your old password"/>-->
+<!--      </div>-->
+<!--      <div *ngIf="errorMessage && deactivateForm.invalid" class="error-message">{{ errorMessage }}</div>-->
+<!--      <button type="submit" (click)="setActiveForm('deactivate')" class="btn btn-danger">Deactivate Account</button>-->
+<!--    </div>-->
+<!--  </form>-->
+</div>

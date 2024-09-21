@@ -1,0 +1,13 @@
+<div  class="posts-container">
+  <div *ngIf="posts.length > 0">
+    <div *ngFor="let post of posts" class="post">
+      <post [post]="post"></post>
+    </div>
+    <button (click)="loadMore()" >
+      <i class="fa-solid fa-ellipsis"></i>
+    </button>
+  </div>
+  <div *ngIf="posts.length === 0">
+    <p>No posts available. Explore posts from users you follow!</p>
+  </div>
+</div>

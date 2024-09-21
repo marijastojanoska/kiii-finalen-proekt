@@ -1,0 +1,38 @@
+<div class="main">
+  <img src="assets/image/logo2.png" alt="image">
+  <div class="register-container">
+    <h2>Welcome to M&M Social App</h2>
+    <h2>Register</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" required />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" required />
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" required />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" required />
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div class="register-link">
+      <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
+    </div>
+  </div>
+</div>

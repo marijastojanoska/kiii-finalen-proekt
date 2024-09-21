@@ -1,0 +1,9 @@
+<navbar class="navbar-fixed"></navbar>
+<div class="container-fluid">
+  <div class="content" *ngIf="post">
+    <post [post]="post"></post>
+  </div>
+  <div class="content " *ngIf="!post">
+    <h1>No post</h1>
+  </div>
+</div>

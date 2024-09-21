@@ -1,0 +1,35 @@
+<div *ngIf="showComponent" class="comment-container">
+  <div class="d-flex align-items-start mb-2">
+    <div class="textarea-container">
+      <div class="profile-image" *ngIf="loggedInUser.userProfile.profilePicture.image">
+        <img [src]="'data:image/jpeg;base64,' + loggedInUser.userProfile.profilePicture.image" alt="Profile image">
+      </div>
+      <div *ngIf="!loggedInUser.userProfile.profilePicture.image" class="default-profile-image"></div>
+      <div class="user-name">
+        {{ loggedInUser.firstName }} {{ loggedInUser.lastName }}
+      </div>
+
+      <div class="textarea-wrapper">
+      <textarea
+        [(ngModel)]="commentContent"
+        placeholder="Write your comment here..."
+        class="form-control"
+        (keydown.enter)="onEnter($event)">
+     </textarea>
+      </div>
+      <div class="button-group">
+        <button (click)="cancel()" class="btn cancel-btn">✖</button>
+        <button (click)="submitComment()" class="btn submit-btn">
+          <i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<confirm-action
+  *ngIf="showConfirmDialog"
+  [message]="'Are you sure you want to post the comment?'"
+  (confirm)="confirmSubmit()"
+  (cancel)="cancelConfirm()">
+</confirm-action>

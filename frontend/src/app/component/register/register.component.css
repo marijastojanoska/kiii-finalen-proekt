@@ -1,0 +1,104 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #fff2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 300px;
+  max-height: 300px;
+  display: inline;
+  position: absolute;
+  top: 13%;
+  left: 26%;
+  z-index: 1000;
+}
+
+.register-container {
+  margin: auto;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 4px 8px lightgrey;
+  padding: 20px 60px;
+}
+
+.register-container h2 {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+form {
+  width: 80%;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 3px;
+  color: #333;
+  font-size: 12px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 35px;
+}
+
+button[type="submit"] {
+  background: lightgrey;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+  background: grey;
+  color: white;
+}
+
+button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d9534f;
+  margin-top: 15px;
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #0056b3;
+}

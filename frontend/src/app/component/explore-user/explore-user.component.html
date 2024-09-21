@@ -1,0 +1,13 @@
+<div class="explore-container">
+  <h2>Explore Users</h2>
+  <div *ngIf="users.length > 0">
+    <ul>
+      <li *ngFor="let user of users">
+        <user-display [user]="user"></user-display>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="users.length === 0">
+    <p>No users to explore.</p>
+  </div>
+</div>

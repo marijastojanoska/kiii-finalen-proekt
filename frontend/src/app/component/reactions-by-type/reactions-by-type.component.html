@@ -1,0 +1,23 @@
+<div class="overlay"></div>
+
+<div class="reactions-grid container">
+  <button class="close-button" (click)="closePopup()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div class="row">
+    <div class="col-2 all-reactions">
+      <p class="text-center">ALL</p>
+      <hr>
+      <div *ngFor="let reaction of getAllReactionsSorted()">
+        <p>{{ reaction.user.username }}</p>
+      </div>
+    </div>
+    <div *ngFor="let type of types" class="col-2 reaction-type">
+      <p>{{ type.emoji }}</p>
+      <hr>
+      <div *ngFor="let reaction of getReactionsByTypeSorted(type)">
+        <p class="router-link-user" [routerLink]="['/user-profile/', reaction.user.username]">{{ reaction.user.username }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="user-card d-flex align-items-center">
+  <div class="profile-image-wrapper">
+    <a [routerLink]="['/user-profile/', user.username]" class="user-link d-flex align-items-center">
+      <div class="profile-image-wrapper d-flex align-items-center">
+        <img *ngIf="user?.userProfile?.profilePicture?.image"
+             [src]="'data:image/jpeg;base64,' + user.userProfile.profilePicture.image"
+             alt="Profile image" class="profile-image rounded-circle">
+        <div *ngIf="!user?.userProfile?.profilePicture?.image"
+             class="default-profile-image rounded-circle"></div>
+      </div>
+      <div class="user-info">
+        <p class="name">{{ user.firstName }} {{ user.lastName }}</p>
+        <p class="username">&#64;{{ user.username }}</p>
+      </div>
+    </a>
+  </div>
+</div>

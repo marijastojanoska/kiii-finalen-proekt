@@ -1,0 +1,32 @@
+<div class="container-fluid reaction-container">
+  <div class="row">
+    <div class="col-12 reaction-counts"
+         (click)="toggleReactionsByType()">
+      {{ reactionCounts }} Reaction
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 reaction-button-container">
+      <button class="reaction-button">
+        React <i class="fa-solid fa-face-smile-beam"></i>
+      </button>
+      <div class="reaction-options">
+        <div *ngFor="let type of reactionTypes"
+             (click)="addReaction(type.type)"
+             [class.selected]="selectedReaction === type.type"
+             class="reaction-option">
+          {{ getEmojiForReaction(type.type) }}
+          {{ reactionCountsMap.get(type.emoji) || 0 }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showReactionsByType" class="row reactions-by-type">
+    <div class="col-12">
+      <reactions-by-type [postId]="postId"
+                         (visibilityChange)="handleVisibilityChange($event)">
+      </reactions-by-type>
+    </div>
+  </div>
+</div>

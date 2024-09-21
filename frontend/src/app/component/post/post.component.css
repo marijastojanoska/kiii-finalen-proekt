@@ -1,0 +1,83 @@
+.post {
+  background-color: white;
+  margin: 5px;
+  box-shadow: 0 4px 8px lightgrey;
+  padding: 25px;
+}
+
+.default-profile-image {
+  background-image: url('/assets/image/default_image.png');
+  background-size: cover;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+
+.profile-image-wrapper {
+  width: 50px;
+  height: 50px;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-username {
+  display: flex;
+  margin-bottom: -20px;
+  align-items: baseline;
+}
+
+.full-name {
+  font-size: 21px;
+  color: black;
+  margin-right: 5px;
+}
+
+.additional {
+  margin-top: 2px;
+}
+
+.username {
+  font-size: 17px;
+  color: lightslategrey;
+}
+
+.date-created {
+  font-size: 0.8em;
+  color: #a0a0a0;
+  margin-top: 7px;
+  max-width: 130px;
+}
+
+.post-tags .badge {
+  background-color: #007bff;
+  color: white;
+  margin: 2px;
+}
+
+.post-tags .badge a {
+  color: white;
+}
+
+.additional {
+  align-items: baseline;
+}
+
+.post-content img {
+  max-width: 200px;
+  max-height: 200px;
+}

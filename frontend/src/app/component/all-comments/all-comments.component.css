@@ -1,0 +1,138 @@
+.comment-content {
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  background-color: #f8f9fa;
+  margin-bottom: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.btn-link{
+  color: black;
+}
+
+.user-info .profile-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.date-created{
+  display: flex;
+  font-weight: lighter;
+
+}
+
+.default-profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.content{
+  font-weight: lighter;
+}
+.btn-reply{
+  padding:0;
+  width:10px;
+  height: 10px;
+  background-color: transparent;
+
+}
+button{
+  margin:0;
+  padding:0;
+}
+
+.add-comment-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info .profile-image-wrapper {
+  width: 25px;
+  height: 25px;
+}
+
+ .profile-image,
+.default-profile-image {
+  width: 25px;
+  height: 25px;
+}
+
+.add-comment-button:hover {
+  background-color: #ff0342;
+}
+
+.add-comment-button i {
+  margin-left: 0.5rem;
+}
+.comment-count{
+  cursor:pointer;
+}
+.reply {
+  margin-left: 40px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  background-color: #f1f3f5;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reply .user-info .profile-image-wrapper {
+  width: 25px;
+  height: 25px;
+}
+
+.reply .profile-image,
+.reply .default-profile-image {
+  width: 25px;
+  height: 25px;
+}
+.reply p{
+  padding:0;
+  margin:0;
+  font-weight: lighter;
+
+}.date-created {
+   font-size: 0.9rem;
+   color: #6c757d;
+   margin-left: 10px;
+ }
+button{
+  background-color: transparent;
+}
+.btn:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.create-reply{
+  margin-left: 40px;
+}
+

@@ -1,0 +1,145 @@
+.profile-navbar {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 400px;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  text-align: center;
+  position: relative;
+}
+
+.profile-image img, .default-profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.default-profile-image {
+  background-image: url('/assets/image/default_image.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.edit-profile-button {
+  color: #fff;
+  border: none;
+  background: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info h2 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.followers-following {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.followers-following span {
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.followers-following span.active {
+  color: #E0AFA0;
+}
+
+.bio {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.logout-button {
+  display: block;
+  width: 70%;
+  color: white;
+  border: none;
+  padding: 8px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+  font-size: 14px;
+  align-self: center;
+  background-color: #ff4d4d;
+  margin-bottom:20px;
+}
+
+.logout-button:hover {
+  transform: scale(1.05);
+}
+
+.finish-profile{
+  background-color: #ff4d4d;
+  padding:5px;
+  color:white;
+  border-radius: 4px;
+}
+@media (min-width: 600px) {
+  .profile-navbar {
+    max-width: 400px;
+  }
+
+  .profile-info h2 {
+    font-size: 20px;
+  }
+
+  .followers-following span {
+    font-size: 16px;
+  }
+
+  .bio {
+    font-size: 16px;
+  }
+
+  .logout-button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .followers-following {
+    flex-direction: column;
+  }
+
+  .followers-following span {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+}

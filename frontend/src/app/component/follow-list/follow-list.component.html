@@ -1,0 +1,20 @@
+<div *ngIf="followList.length > 0; else noFollowList" class="follow-list">
+
+  <div *ngFor="let user of followList">
+    <user-display [user]="user"></user-display>
+  </div>
+</div>
+
+<ng-template #noFollowList>
+  <p class="no-follow-list">
+    {{ isFollowersList ? 'No followers found.' : 'No following users found.' }}
+  </p>
+</ng-template>
+<div class="d-flex align-items-center justify-content-center">
+<button (click)="loadMore()" class="btn-load-more">
+  <i class="fa-solid fa-chevron-down"></i>
+</button>
+<button (click)="loadLess()" class="btn-load-less">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+</div>

@@ -1,0 +1,51 @@
+<navbar class="navbar-fixed"></navbar>
+<!--<div *ngIf="userProfile?.user?.accountDeactivated"><deactivated-user></deactivated-user></div>-->
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="cover-photo">
+      <img src="/assets/image/image1_0.jpg" alt="cover photo" class="cover-photo-image">
+    </div>
+    <div class="profile-details">
+      <div *ngIf="userProfile">
+        <div class="profile-image">
+          <img *ngIf="userProfile?.profilePicture" [src]="'data:image/jpeg;base64,' + userProfile.profilePicture.image"
+               alt="Profile image">
+          <div *ngIf="!userProfile.profilePicture" class="default-profile-image"></div>
+          <a [routerLink]="['/create-profile']" class="edit-profile-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-pencil-fill"
+                 viewBox="0 0 26 26">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="profile-info">
+          <p class="username">&#64;{{ userProfile.user.username }}</p>
+          <h1>{{ userProfile.user.firstName }} {{ userProfile.user.lastName }}</h1>
+          <p class="bio">{{ userProfile.bio }}</p>
+          <p class="date-of-birth">Date of Birth: {{ userProfile.dateOfBirth }}</p>
+          <p class="created-at">Joined: {{ userProfile.createdAt | date:'MMM d, h:mm' }}</p>
+          <p class="posts-stats">{{ postNumber }} Posts {{ followers }} Followers {{ following }} Following</p>
+        </div>
+
+      </div>
+
+      <div *ngIf="loggedInUserUsername != targetUsername">
+        <button (click)="unfollowUser()" *ngIf="isFollowing" class="follow-btn">Unfollow</button>
+        <button (click)="followUser()" *ngIf="!isFollowing" class="follow-btn">Follow</button>
+      </div>
+    </div>
+    <div *ngIf="!userProfile">
+      <p>Loading user profile...</p>
+    </div>
+
+    <div *ngIf="posts.length === 0">
+      <p>This user has not posted anything yet.</p>
+    </div>
+
+    <div *ngIf="posts.length > 0">
+      <h3><i class="fa-solid fa-grip posts-icon"></i>POSTS</h3>
+      <all-posts [user]="targetUsername"></all-posts>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="comment-count d-flex justify-content-between align-items-center"
+     (click)="toggleComments()">{{commentCounts}} Comments
+</div>
+
+<div *ngIf="!activeComment.id" class="d-flex justify-content-between align-items-center">
+  <button (click)="showCommentForm('add')" class="add-comment-button">
+    Add Comment
+    <i class="fa-solid fa-comment"></i>  </button>
+</div>
+
+<create-comment *ngIf="showCreateComment && !activeComment.id"
+                [postId]="postId!"
+                [parentId]="undefined"
+                [commentId]="undefined"
+                [showComponent]="showCreateComment"
+                (formClosed)="hideCommentForm()">
+</create-comment>
+
+<div *ngIf="comments.length > 0 && showComments">
+  <ul class="list-unstyled">
+    <li *ngFor="let comment of comments">
+      <div [ngStyle]="{'margin-left': comment.parent?.id ? '20px' : '0px'}" class="comment">
+        <div class="comment-content">
+          <div class="user-info d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <div class="profile-image-wrapper mr-2">
+                <img *ngIf="comment.user?.userProfile?.profilePicture?.image"
+                     [src]="'data:image/jpeg;base64,' + comment.user.userProfile.profilePicture.image"
+                     alt="Profile image" class="profile-image rounded-circle">
+                <div *ngIf="!comment.user?.userProfile?.profilePicture?.image"
+                     class="default-profile-image"></div>
+              </div>
+              <span class="font-weight-bold">{{ comment.user.firstName }} {{ comment.user.lastName }}</span>
+            </div>
+
+            <div class="comment-actions">
+              <div class="date-created">{{ comment.createdAt | date:'MMM d, h:mm ' }}</div>
+              <button *ngIf="canEditOrDelete(comment)" class="btn btn-link p-0 ml-2"
+                      (click)="showCommentForm('edit', comment.id)">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button *ngIf="canEditOrDelete(comment)" class="btn btn-link p-0 ml-2"
+                      (click)="deleteComment(comment.id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <div class="row p-0 m-0">
+
+          <div class="col-10 content">{{ comment.content }}</div>
+          <button *ngIf="!comment.parent" class=" col-1 btn-reply" (click)="showCommentForm('reply', comment.id)">
+            <i class="fa-solid fa-reply"></i>
+            ️</button>
+          <button class="col-1 btn view-reply" *ngIf="replies.get(comment.id)" (click)="toggleReplies(comment.id)">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+          </div>
+        </div>
+
+        <div class="create-reply">
+        <create-comment *ngIf="activeComment.type === 'reply' && activeComment.id === comment.id"
+                        [postId]="postId!"
+                        [parentId]="comment.id"
+                        [commentId]="undefined"
+                        [showComponent]="true"
+                        (formClosed)="hideCommentForm()">
+        </create-comment>
+      </div>
+        <ul class="list-unstyled" *ngIf="replies.has(comment.id) && replies.get(comment.id)?.isVisible">
+          <li *ngFor="let reply of replies.get(comment.id)?.comments" class="mb-2">
+            <div class="reply">
+              <div class="user-info d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center">
+                  <div class="profile-image-wrapper mr-2">
+                    <img *ngIf="reply.user?.userProfile?.profilePicture?.image"
+                         [src]="'data:image/jpeg;base64,' + reply.user.userProfile.profilePicture.image"
+                         alt="Profile image" class="profile-image rounded-circle">
+                    <div *ngIf="!reply.user?.userProfile?.profilePicture?.image"
+                         class="profile-placeholder rounded-circle"></div>
+                  </div>
+                  <span class="font-weight-bold">{{ reply.user.firstName }} {{ reply.user.lastName }}</span>
+                </div>
+                <div class="comment-actions">
+                  <div class="date-created">{{ reply.createdAt | date:'MMM d, h:mm' }}</div>
+                  <button *ngIf="canEditOrDelete(reply)" class="btn btn-link p-0"
+                          (click)="showCommentForm('edit', reply.id)">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button *ngIf="canEditOrDelete(reply)" class="btn btn-link text-danger p-0 ml-2"
+                          (click)="deleteComment(reply.id)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <p>{{ reply.content }}</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </li>
+  </ul>
+  <div class="d-flex justify-content-start align-content-start">
+  <button (click)="loadMore()">
+    <i class="fa-solid fa-chevron-down mr-2"></i>
+  </button>
+  <button (click)="loadLess()">
+    <i class="fa-solid fa-chevron-up ml-2"></i>
+  </button>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <form (ngSubmit)="savePost()">
+      <div class="row profile-info align-items-center">
+        <div class="col-1 profile-image" *ngIf="loggedInUser?.userProfile?.profilePicture">
+          <img [src]="'data:image/jpeg;base64,' + loggedInUser?.userProfile?.profilePicture?.image" alt="Profile image">
+        </div>
+        <div class="col-6 my-2 profile-name">
+          <span>{{ loggedInUser?.firstName }} {{ loggedInUser?.lastName }}</span>
+        </div>
+      </div>
+      <div class="my-3">
+        <textarea id="content" [(ngModel)]="content" name="content" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <div class="image-preview" *ngIf="currentImagePreview">
+        <div class="image-container">
+          <img [src]="currentImagePreview" alt="Image preview">
+          <span class="delete-image" *ngIf="selectedImage" (click)="deleteCurrentImage()">&times;</span>
+          <span class="delete-image" *ngIf="originalImagePreview && !selectedImage" (click)="deleteImage()">&times;</span>
+        </div>
+      </div>
+      <div class="upload-container">
+        <label for="image" class="upload-icon">
+          <i class="fas fa-camera"></i>
+        </label>
+        <input type="file" id="image" (change)="onFileSelected($event)" #fileInput class="file-input"/>
+      </div>
+      <button type="button" [disabled]="!content.trim()" (click)="submitPost()">Post</button>
+    </form>
+  </div>
+</div>
+
+<confirm-action
+  *ngIf="showConfirmDialog"
+  [message]="'Are you sure you want to add this post to your timeline?'"
+  (confirm)="confirmPost()"
+  (cancel)="cancelConfirm()">
+</confirm-action>

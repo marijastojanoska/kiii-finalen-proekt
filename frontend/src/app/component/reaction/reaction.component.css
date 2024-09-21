@@ -1,0 +1,60 @@
+.reaction-container {
+  position: relative;
+}
+
+.reaction-button-container {
+  position: relative;
+}
+
+.reaction-options {
+  display: none;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.reaction-button:hover + .reaction-options,
+.reaction-options:hover {
+  display: block;
+}
+
+.reaction-option {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.2rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.reaction-option:hover {
+  background-color: #ff4d4d;
+}
+
+.reaction-option.selected {
+  background-color: #ff0342;
+  color: #fff;
+}
+
+.reaction-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.reaction-button:hover {
+  background-color: #ff4d4d;
+}
+
+.reaction-counts {
+  cursor: pointer;
+}
+
+.reactions-by-type {
+width: 100%
+}

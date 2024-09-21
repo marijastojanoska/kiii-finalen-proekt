@@ -1,0 +1,26 @@
+<div class="main">
+  <img src="assets/image/background-auth.png" alt="image">
+  <div class="login-container">
+    <div class="title">
+      <h2>Login to Your</h2>
+      <h2>M&M Social App Account</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" required/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" required/>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div class="register-link">
+      <p>Do not have an account? <a [routerLink]="['/register']">Register</a></p>
+    </div>
+  </div>
+
+</div>

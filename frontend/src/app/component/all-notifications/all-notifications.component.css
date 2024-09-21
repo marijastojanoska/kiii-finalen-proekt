@@ -1,0 +1,134 @@
+.notifications {
+  position: relative;
+  z-index: 1002;
+}
+
+.notifications-title {
+  margin-right: 7px;
+}
+
+.notifications-header {
+  width: 100%;
+  margin: 7px;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+}
+
+.unread-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0 4px;
+  font-size: 10px;
+}
+
+.notifications-list {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px lightgrey;
+  width: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 15px;
+  z-index: 1002;
+}
+
+
+.notifications-header h2 {
+  margin: 0;
+}
+
+.notifications-header p {
+  margin: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.notifications-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+
+.list-group-item {
+  background-color: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px lightgrey;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.list-group-item.read {
+  background-color: #f2f2f2;
+}
+
+
+.list-group-item p {
+  margin: 0;
+  flex: 1;
+}
+
+.btn-load-more, .btn-load-less {
+  display: inline;
+}
+
+button {
+  background-color: white;
+
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.btn-danger {
+  background-color: #ff4d4d;
+  border: none;
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+}
+
+.btn-secondary {
+  border: none;
+  color: #fff;
+}
+
+.notification-actions {
+  width: 100%;
+  margin: 7px;
+}
+
+.notification-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.load-more {
+  cursor: pointer;
+}

@@ -1,0 +1,38 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 0.7rem;
+    outline: none;
+    border: none;
+}
+
+i {
+    background-color: transparent !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body, html {
+    overflow: hidden;
+    height: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}

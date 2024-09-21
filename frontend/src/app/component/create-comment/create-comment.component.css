@@ -1,0 +1,189 @@
+.comment-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  max-width: 600px;
+  padding:0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+
+.profile-image, .default-profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.default-profile-image {
+  font-size: 20px;
+  color: #fff;
+  background-color: #bbb;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.form-control {
+  width: 100%;
+  resize: none;
+  border:none;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 35px;
+  height:70px;
+  background-color: white;
+
+}
+i{
+  color:black;
+}
+
+.submit-btn {
+  position: absolute;
+  right: 4px;
+
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  margin-left:30px;
+}
+.form-control:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.submit-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+  padding:0;
+}
+.textarea-wrapper{
+  padding: 0;
+}
+
+.cancel-btn {
+  color: black;
+  background: none;
+}
+
+.cancel-btn:hover {
+  color: black;
+}
+
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+.profile-image {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.default-profile-image {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  background-image: url('/assets/image/default_image.png');
+  background-size: cover;
+  background-position: center;
+  width: 25px;
+  height: 25px;
+}
+
+.user-name {
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+.submit-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-60%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  margin-left: 30px;
+}
+
+.cancel-btn {
+  position: absolute;
+  right: 4px;
+  top: 75%;
+  transform: translateY(-60%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.textarea-wrapper {
+  flex-grow: 1;
+  padding: 0;
+}
+
+.form-control {
+  width: 100%;
+  resize: none;
+  border: none;
+  padding-left: 50px;
+  padding-top: 35px;
+  height: 70px;
+  background-color: white;
+}
+
+.form-control:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
