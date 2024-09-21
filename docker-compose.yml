@@ -13,7 +13,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend
+    image: mstojanoska/kiii-backend:latest
     ports:
       - "8080:8080"
     environment:
@@ -24,7 +24,7 @@ services:
       - db
 
   frontend:
-    build: ./frontend
+    image: mstojanoska/kiii-frontend:latest
     ports:
       - "4200:4200"
     depends_on:
